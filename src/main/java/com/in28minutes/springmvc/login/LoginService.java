@@ -7,7 +7,7 @@ public class LoginService {
 
 	public boolean validateUser(String user, String password) {
 
-		return (user.equals("in28minutes") && password.equals("dummy"));
+		return (user.equals("in28Minutes") && password.equals("dummy"));
 	}
 
 }
