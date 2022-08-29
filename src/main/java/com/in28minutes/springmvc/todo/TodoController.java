@@ -30,18 +30,28 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-	public String showTodoPage() {
+	public String showTodoPage(ModelMap modelMap) {
+
+		{
+			/*
+			 * used in add-todo.jsp as commandName="todoObj"
+			 */
+
+			// modelMap.addAttribute("todoObj", new Todo());
+
+			modelMap.addAttribute("todoObj", new Todo(-1, null, "Default Desc", null, false));
+		}
 
 		return "add-todo";
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-	public String addTodo(ModelMap modelMap, @RequestParam String desc) {
+	public String addTodo(ModelMap modelMap, Todo todo) {
 
 		{
 			String userName = (String) modelMap.get("userName");
 
-			service.addTodo(userName, desc, new Date(), false);
+			service.addTodo(userName, todo.getDesc(), new Date(), false);
 		}
 
 		{
